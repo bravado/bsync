@@ -22,7 +22,7 @@ public class MockServer extends SyncCore {
         serverFiles.add(fileEntry);
 
 
-        history.put(repo, fileEntry);
+        //history.put(repo, fileEntry);
     }
 
     public void addFile(FileEntry fileEntry) {

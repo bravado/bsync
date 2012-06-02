@@ -63,7 +63,7 @@ public class SyncCore {
         for (FileEntry fileEntry : clientNewFiles) {
             operations.add(new SyncOperation(fileEntry, SyncOperation.PUT));
         }
-
+/*
         // New or conflicting files from client
         for (FileEntry fileEntry : userFiles) {
 
@@ -111,10 +111,10 @@ public class SyncCore {
         for (FileEntry fileEntry : repositoryFilesAndServerJoin) {
             operations.add(new SyncOperation(fileEntry, canRepositoryUpdateFile(syncToken, fileEntry) ? SyncOperation.PUT : SyncOperation.GET));
         }
-
+*/
         return operations;
     }
-
+/*
     private boolean canRepositoryUpdateFile(SyncToken syncToken, FileEntry fileEntry) {
         FileEntry historyFileEntry = getServerRepositoryHistory().get(syncToken);
 
@@ -124,5 +124,5 @@ public class SyncCore {
 
         return getServerRepositoryFiles().indexOf(historyFileEntry) > 0;
     }
-
+*/
 }

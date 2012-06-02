@@ -115,6 +115,57 @@ public class SyncCoreTest {
     }
 
     @Test
+    public void testAlgoritmo() {
+
+        List<FileEntry> historico = new ArrayList<FileEntry>();
+        List<FileEntry> user = new ArrayList<FileEntry>();
+        List<FileEntry> server = new ArrayList<FileEntry>();
+
+        historico.add(new FileEntry("lalala", "123"));
+        historico.add(new FileEntry("lalala2", "123"));
+        historico.add(new FileEntry("lalala3", "123"));
+        historico.add(new FileEntry("lalala4", "123"));
+        System.out.println("Historico \n" + historico);
+
+        user.add(new FileEntry("lalala", "123"));
+        user.add(new FileEntry("lalala3", "123"));
+        user.add(new FileEntry("lalala4", "124"));
+        user.add(new FileEntry("lalala6", "123"));
+        System.out.println("Client \n" + user);
+
+        server.add(new FileEntry("lalala", "123"));
+        server.add(new FileEntry("lalala2", "123"));
+        server.add(new FileEntry("lalala3", "123"));
+        server.add(new FileEntry("lalala4", "123"));
+        server.add(new FileEntry("lalala5", "321"));
+        System.out.println("Server \n" + server);
+
+        System.out.println("\n\ndeleted on client");
+        System.out.println(select(
+                historico,
+                having(on(FileEntry.class).getFilename(),
+                        org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(extract(user,
+                                on(FileEntry.class).getFilename()))))));
+
+        System.out.println("\nupdated/created on client");
+        System.out.println(select(user, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(historico))));
+
+        System.out.println("\nnew on client");
+        System.out.println(select(
+                user,
+                having(on(FileEntry.class).getFilename(),
+                        org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(extract(server,
+                                on(FileEntry.class).getFilename()))))));
+
+        System.out.println("\nnew on server");
+        System.out.println(select(
+                server,
+                having(on(FileEntry.class).getFilename(),
+                        org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(extract(user,
+                                on(FileEntry.class).getFilename()))))));
+    }
+
+    @Test
     public void testNotIn() {
 
         List<FileEntry> list1 = new ArrayList<FileEntry>();
@@ -122,9 +173,13 @@ public class SyncCoreTest {
 
         list1.add(new FileEntry("lalala", "123"));
         list1.add(new FileEntry("lalala2", "123"));
+        list1.add(new FileEntry("lalala3", "123"));
+        list1.add(new FileEntry("lalala4", "123"));
 
         list2.add(new FileEntry("lalala", "123"));
         list2.add(new FileEntry("lalala3", "123"));
+        list2.add(new FileEntry("lalala4", "124"));
+
 
         System.out.println("inner join");
         System.out.println(select(
