@@ -1,9 +1,6 @@
 package bravado.sync.core;
 
-import com.twmacinta.util.MD5;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import org.hamcrest.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +15,7 @@ import static ch.lambdaj.Lambda.*;
  */
 public class SyncCore {
 
-    protected HashMap<Repository, FileEntry> getServerRepositoryHistory() {
+    protected HashMap<SyncToken, FileEntry> getServerRepositoryHistory() {
         throw new NotImplementedException();
     }
 
@@ -26,21 +23,23 @@ public class SyncCore {
         throw new NotImplementedException();
     }
 
-    public List<SyncOperation> sync(Repository repository, List<FileEntry> repositoryFiles) {
+    public List<SyncOperation> sync(SyncToken syncToken, List<FileEntry> repositoryFiles) {
 
         List<SyncOperation> operations = new ArrayList<SyncOperation>();
         List<FileEntry> repositoryFilesAndServerJoin = select(getServerRepositoryFiles(), org.hamcrest.Matchers.isIn(repositoryFiles));
 
-        // TODO filter only files found on server and repository (join ?)
+
+
+        // TODO filter only files found on server and syncToken (join ?)
         for (FileEntry fileEntry : repositoryFilesAndServerJoin) {
-            operations.add(new SyncOperation(fileEntry, canRepositoryUpdateFile(repository, fileEntry) ? SyncOperation.PUT : SyncOperation.GET));
+            operations.add(new SyncOperation(fileEntry, canRepositoryUpdateFile(syncToken, fileEntry) ? SyncOperation.PUT : SyncOperation.GET));
         }
 
         return operations;
     }
 
-    private boolean canRepositoryUpdateFile(Repository repository, FileEntry fileEntry) {
-        FileEntry historyFileEntry = getServerRepositoryHistory().get(repository);
+    private boolean canRepositoryUpdateFile(SyncToken syncToken, FileEntry fileEntry) {
+        FileEntry historyFileEntry = getServerRepositoryHistory().get(syncToken);
 
         if (historyFileEntry == null) {
             return false; // TODO check conflict ?
