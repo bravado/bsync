@@ -1,10 +1,15 @@
 package bravado.sync.core;
 
 import com.twmacinta.util.MD5;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import org.hamcrest.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static ch.lambdaj.Lambda.*;
 
 /**
  * SyncCore
@@ -13,19 +18,35 @@ import java.util.List;
  */
 public class SyncCore {
 
-    public static List<String> sync(String repository, HashMap<String, String> listFilesRepository1) {
+    protected HashMap<Repository, FileEntry> getServerRepositoryHistory() {
+        throw new NotImplementedException();
+    }
 
-        HashMap<String, String> listFilesServer = new HashMap<String, String>();
+    protected List<FileEntry> getServerRepositoryFiles() {
+        throw new NotImplementedException();
+    }
 
+    public List<SyncOperation> sync(Repository repository, List<FileEntry> repositoryFiles) {
 
+        List<SyncOperation> operations = new ArrayList<SyncOperation>();
+        List<FileEntry> repositoryFilesAndServerJoin = select(getServerRepositoryFiles(), org.hamcrest.Matchers.isIn(repositoryFiles));
 
-        // listFilesRepository1 right repository // download
-        // listFilesRepository1 left repository // upload
-            // isRepositoryLastUpdateFile(repository, file)
-            // getLastUpdateFile(file)
-            // isRepositoryLastDownloadFile(repository, file, dateLastUpdate)
+        // TODO filter only files found on server and repository (join ?)
+        for (FileEntry fileEntry : repositoryFilesAndServerJoin) {
+            operations.add(new SyncOperation(fileEntry, canRepositoryUpdateFile(repository, fileEntry) ? SyncOperation.PUT : SyncOperation.GET));
+        }
 
-        return null;
+        return operations;
+    }
+
+    private boolean canRepositoryUpdateFile(Repository repository, FileEntry fileEntry) {
+        FileEntry historyFileEntry = getServerRepositoryHistory().get(repository);
+
+        if (historyFileEntry == null) {
+            return false; // TODO check conflict ?
+        }
+
+        return getServerRepositoryFiles().indexOf(historyFileEntry) > 0;
     }
 
 }
