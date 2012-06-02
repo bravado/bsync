@@ -38,4 +38,9 @@ public class FileEntry {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Filename: " + getFilename() + " Hash: " + getHash();
+    }
 }

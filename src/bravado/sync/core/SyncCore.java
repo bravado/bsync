@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static ch.lambdaj.Lambda.*;
+import static ch.lambdaj.Lambda.select;
 
 /**
  * SyncCore
@@ -20,7 +20,7 @@ public class SyncCore {
 
         List<FileEntry> userHistory = serverHistory.get(syncToken);
 
-        if(userHistory == null) {
+        if (userHistory == null) {
             userHistory = new ArrayList<FileEntry>();
             serverHistory.put(syncToken, userHistory);
         }
@@ -39,65 +39,66 @@ public class SyncCore {
     public List<SyncOperation> sync(SyncToken syncToken, List<FileEntry> userFiles) {
 
         List<SyncOperation> operations = new ArrayList<SyncOperation>();
-        //List<FileEntry> repositoryFilesAndServerJoin = select(getServerRepositoryFiles(), org.hamcrest.Matchers.isIn(repositoryFiles));
 
         List<FileEntry> serverFiles = getServerRepositoryFiles();
         List<FileEntry> userHistory = getHistoryFor(syncToken);
 
         // Files that were deleted on the client
-        for(FileEntry fileEntry: userHistory) {
-            if(!userFiles.contains(fileEntry)) {
-                operations.add(new SyncOperation(fileEntry, "delete-server"));
+        List<FileEntry> clientDeletedFiles = select(userHistory, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(userFiles)));
+        for (FileEntry fileEntry : clientDeletedFiles) {
+            if (!userFiles.contains(fileEntry)) {
+                operations.add(new SyncOperation(fileEntry, SyncOperation.DELETE));
             }
         }
 
         // New files on server
-        for(FileEntry fileEntry: serverFiles) {
-            if(!userFiles.contains(fileEntry)) {
-                operations.add(new SyncOperation(fileEntry, SyncOperation.GET));
-            }
+        List<FileEntry> serverNewFiles = select(serverFiles, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(userFiles)));
+        for (FileEntry fileEntry : serverNewFiles) {
+            operations.add(new SyncOperation(fileEntry, SyncOperation.GET));
+
         }
 
+        // New files on the client
+        List<FileEntry> clientNewFiles = select(userFiles, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(serverFiles)));
+        for (FileEntry fileEntry : clientNewFiles) {
+            operations.add(new SyncOperation(fileEntry, SyncOperation.PUT));
+        }
 
-        // New/conflicting files from client
-        for(FileEntry fileEntry: userFiles) {
+        // New or conflicting files from client
+        for (FileEntry fileEntry : userFiles) {
 
             // server does not have file (or it has been deleted)
-            if(!serverFiles.contains(fileEntry)) {
-                
+            if (!serverFiles.contains(fileEntry)) {
+
             }
 
 
             String hashServer = files.get(k);
-            if(hashServer == null) { // arquivo ainda não existe no server ou foi excluído
-                if(historico.get(k) == null) { // nunca baixou esse arquivo do servidor
+            if (hashServer == null) { // arquivo ainda não existe no server ou foi excluído
+                if (historico.get(k) == null) { // nunca baixou esse arquivo do servidor
                     operations.put(k, "put");
-                }
-                else {
+                } else {
                     // tinha baixado o arquivo, mas ele não existe mais
                     operations.put(k, "delete-local");
                 }
-            }
-            else { // servidor já tem o arquivo
+            } else { // servidor já tem o arquivo
 
-                if(hashServer.equals(currentUserFiles.get(k))) {
+                if (hashServer.equals(currentUserFiles.get(k))) {
                     // arquivos são iguais, não fazer nada
                     // Caso extremo - usuário não baixou a última versão, mas tem a versão atual localmente
                     //  (Precisaria marcar que o hash historico igual ao que o usuário enviou)
 
-                }
-                else {
+                } else {
                     // arquivo do server e enviado pelo client são diferentes!
                     String hashAntigo = historico.get(k);
 
-                    if(hashAntigo.equals(hashServer)) { // usuário tinha a última versão do arquivo
+                    if (hashAntigo.equals(hashServer)) { // usuário tinha a última versão do arquivo
                         operations.put(k, "put");
-                    }
-                    else {
+                    } else {
                         // o hashAntigo é diferente do que tinha no server
 
                         // se o client enviou o mesmo arquivo de antes
-                        if(hashAntigo.equals(currentUserFiles.get(k))) {
+                        if (hashAntigo.equals(currentUserFiles.get(k))) {
                             operations.put(k, "get");
                         }
                     }

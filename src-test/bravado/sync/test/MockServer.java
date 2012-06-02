@@ -35,7 +35,7 @@ public class MockServer extends SyncCore {
     }
 
     @Override
-    protected HashMap<SyncToken, FileEntry> getServerRepositoryHistory() {
+    protected HashMap<SyncToken, List<FileEntry>> getServerRepositoryHistory() {
         return history;
     }
 
