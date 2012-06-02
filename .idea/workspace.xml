@@ -61,10 +61,11 @@
       <file leaf-file-name="SyncCoreTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="3" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.78503186">
+            <state line="70" column="38" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.593949">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1342#1357#0" expanded="true" />
+                <element signature="e#1330#1345#0" expanded="true" />
+                <element signature="e#2013#2028#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -734,10 +735,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="3" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.78503186">
+        <state line="70" column="38" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.593949">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1342#1357#0" expanded="true" />
+            <element signature="e#1330#1345#0" expanded="true" />
+            <element signature="e#2013#2028#0" expanded="true" />
           </folding>
         </state>
       </provider>

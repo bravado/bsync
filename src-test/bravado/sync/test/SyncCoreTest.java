@@ -39,19 +39,43 @@ public class SyncCoreTest {
 
         MockServer server = new MockServer();
         server.addFile(repo2, new FileEntry("file3.txt", "8343"));
-    
+
         // repo1 add file
         repo1.addFile(new FileEntry("file2.txt", "2343"));
-        
+
         List<SyncOperation> operationsRepo1 = server.sync(repo1, repo1.repositoryFiles);
 
-        List<SyncOperation> operationsExpected = new ArrayList<SyncOperation>(); 
+        List<SyncOperation> operationsExpected = new ArrayList<SyncOperation>();
         operationsExpected.add(new SyncOperation(new FileEntry("file3.txt", "8343"), GET));
         operationsExpected.add(new SyncOperation(new FileEntry("file2.txt", "2343"), PUT));
-        
+
         Assert.assertTrue(operationsRepo1.containsAll(operationsExpected));
     }
 
+    public void testRepo1PutDeleteAndPut() {
+
+        MockSyncToken repo1 = new MockSyncToken("repo1", "~/");
+
+        MockServer server = new MockServer();
+
+        // repo1 add file
+        repo1.addFile(new FileEntry("file2.txt", "2343"));
+
+        List<SyncOperation> operationsRepo1 = server.sync(repo1, repo1.repositoryFiles);
+
+        List<SyncOperation> operationsExpected = new ArrayList<SyncOperation>();
+        operationsExpected.add(new SyncOperation(new FileEntry("file2.txt", "2343"), PUT));
+
+        Assert.assertTrue(operationsRepo1.containsAll(operationsExpected));
+
+        repo1.repositoryFiles.clear();
+
+        operationsRepo1 = server.sync(repo1, repo1.repositoryFiles);
+
+        operationsExpected = new ArrayList<SyncOperation>();
+        operationsExpected.add(new SyncOperation(new FileEntry("file2.txt", "2343"), PUT));
+
+    }
 
 
 }
