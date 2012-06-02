@@ -16,15 +16,22 @@ import java.util.List;
 public class MockServer extends SyncCore {
     
     public List<FileEntry> serverFiles = new ArrayList<FileEntry>();
-    public HashMap<SyncToken, FileEntry> history = new HashMap<SyncToken, FileEntry>();
+    public HashMap<SyncToken, List<FileEntry>> history = new HashMap<SyncToken, List<FileEntry>>();
 
     public void addFile(SyncToken repo, FileEntry fileEntry) {
         serverFiles.add(fileEntry);
+
+
         history.put(repo, fileEntry);
     }
 
     public void addFile(FileEntry fileEntry) {
         serverFiles.add(fileEntry);
+    }
+
+    public void deleteFile(SyncToken repo, FileEntry fileEntry) {
+        serverFiles.remove(fileEntry);
+        history.get(repo);
     }
 
     @Override
