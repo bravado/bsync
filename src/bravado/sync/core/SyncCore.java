@@ -13,9 +13,11 @@ import java.util.List;
  */
 public class SyncCore {
 
-    private static List<String> sync(String repository, HashMap<String, String> listFilesRepository1) {
+    public static List<String> sync(String repository, HashMap<String, String> listFilesRepository1) {
 
         HashMap<String, String> listFilesServer = new HashMap<String, String>();
+
+
 
         // listFilesRepository1 right repository // download
         // listFilesRepository1 left repository // upload
