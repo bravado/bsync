@@ -17,7 +17,11 @@ public class SyncCore {
 
         HashMap<String, String> listFilesServer = new HashMap<String, String>();
 
-        // listFilesRepository1 - repository // download
+        // listFilesRepository1 right repository // download
+        // listFilesRepository1 left repository // upload
+            // isRepositoryLastUpdateFile(repository, file)
+            // getLastUpdateFile(file)
+            // isRepositoryLastDownloadFile(repository, file, dateLastUpdate)
 
         return null;
     }
