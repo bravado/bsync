@@ -28,8 +28,6 @@ public class SyncCore {
         List<SyncOperation> operations = new ArrayList<SyncOperation>();
         List<FileEntry> repositoryFilesAndServerJoin = select(getServerRepositoryFiles(), org.hamcrest.Matchers.isIn(repositoryFiles));
 
-
-
         // TODO filter only files found on server and syncToken (join ?)
         for (FileEntry fileEntry : repositoryFilesAndServerJoin) {
             operations.add(new SyncOperation(fileEntry, canRepositoryUpdateFile(syncToken, fileEntry) ? SyncOperation.PUT : SyncOperation.GET));

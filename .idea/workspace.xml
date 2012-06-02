@@ -11,6 +11,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="Commander">
+    <leftPanel url="file://$PROJECT_DIR$" />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -58,27 +63,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SyncCoreTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
+      <file leaf-file-name="SyncCore.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="38" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.593949">
+            <state line="8" column="0" selection-start="178" selection-end="212" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1330#1345#0" expanded="true" />
-                <element signature="e#2013#2028#0" expanded="true" />
+                <element signature="e#669#684#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SyncCore.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java">
+      <file leaf-file-name="SyncCoreTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
+            <state line="122" column="27" selection-start="3993" selection-end="3993" vertical-scroll-proportion="0.5048544">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#669#684#0" expanded="true" />
+                <element signature="e#1366#1381#0" expanded="true" />
+                <element signature="e#2049#2064#0" expanded="true" />
+                <element signature="e#2955#2970#0" expanded="true" />
+                <element signature="e#3882#3893#0" expanded="true" />
+                <element signature="e#3942#3953#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileEntry.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="67" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,7 +120,6 @@
         <option value="$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreMock.java" />
         <option value="$PROJECT_DIR$/src-test/bravado/sync/test/FileEntry.java" />
         <option value="$PROJECT_DIR$/src-test/bravado/sync/test/MockRepository.java" />
-        <option value="$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java" />
         <option value="$PROJECT_DIR$/src/bravado/sync/core/SyncOperation.java" />
         <option value="$PROJECT_DIR$/src/bravado/sync/core/SyncMock1.java" />
         <option value="$PROJECT_DIR$/bsync.iml" />
@@ -114,6 +129,7 @@
         <option value="$PROJECT_DIR$/src-test/bravado/sync/test/MockSyncToken.java" />
         <option value="$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java" />
         <option value="$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java" />
+        <option value="$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java" />
       </list>
     </option>
   </component>
@@ -279,7 +295,7 @@
       <recent name="bravado.sync.core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SyncCoreTest.testBobPutAllFiles">
+  <component name="RunManager" selected="JUnit.SyncCoreTest.testNotIn">
     <configuration default="false" name="SyncCoreTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -349,6 +365,34 @@
       <option name="PACKAGE_NAME" value="bravado.sync.test" />
       <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
       <option name="METHOD_NAME" value="testBobPutAllFiles" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SyncCoreTest.testNotIn" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="bravado.sync.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bsync" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="bravado.sync.test" />
+      <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
+      <option name="METHOD_NAME" value="testNotIn" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -499,10 +543,11 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JUnit.SyncCoreTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testReposirotyGetAllFiles" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testBobPutAllFiles" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testNotIn" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -575,9 +620,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33522728" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23863636" sideWeight="0.670229" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977098" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -660,13 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="21" selection-start="784" selection-end="784" vertical-scroll-proportion="0.50159234">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bsync.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="839" selection-end="839" vertical-scroll-proportion="0.61893207">
@@ -682,13 +720,6 @@
             <element signature="e#363#374#0" expanded="true" />
             <element signature="e#440#462#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="152" selection-end="152" vertical-scroll-proportion="0.21496816">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -716,13 +747,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#669#684#0" expanded="true" />
-          </folding>
+        <state line="21" column="21" selection-start="784" selection-end="784" vertical-scroll-proportion="0.50159234">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -733,13 +761,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="178" selection-end="212" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#669#684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="67" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="38" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.593949">
+        <state line="122" column="27" selection-start="3993" selection-end="3993" vertical-scroll-proportion="0.5048544">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1330#1345#0" expanded="true" />
-            <element signature="e#2013#2028#0" expanded="true" />
+            <element signature="e#1366#1381#0" expanded="true" />
+            <element signature="e#2049#2064#0" expanded="true" />
+            <element signature="e#2955#2970#0" expanded="true" />
+            <element signature="e#3882#3893#0" expanded="true" />
+            <element signature="e#3942#3953#0" expanded="true" />
           </folding>
         </state>
       </provider>
