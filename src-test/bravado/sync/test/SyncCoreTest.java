@@ -113,13 +113,13 @@ public class SyncCoreTest {
         Assert.assertTrue(operations.containsAll(operationsExpected));
 
     }
-    
+
     @Test
     public void testNotIn() {
-        
+
         List<FileEntry> list1 = new ArrayList<FileEntry>();
         List<FileEntry> list2 = new ArrayList<FileEntry>();
-        
+
         list1.add(new FileEntry("lalala", "123"));
         list1.add(new FileEntry("lalala2", "123"));
 
@@ -127,11 +127,26 @@ public class SyncCoreTest {
         list2.add(new FileEntry("lalala3", "123"));
 
         System.out.println("inner join");
-        System.out.println(select(list1, org.hamcrest.Matchers.isIn(list2)));
+        System.out.println(select(
+                list1,
+                having(on(FileEntry.class).getFilename(),
+                        org.hamcrest.Matchers.isIn(extract(list2,
+                                on(FileEntry.class).getFilename())))));
+
         System.out.println("left join");
-        System.out.println(select(list1, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(list2))));
+        System.out.println(select(
+                list1,
+                having(on(FileEntry.class).getFilename(),
+                        org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(extract(list2,
+                                on(FileEntry.class).getFilename()))))));
+
         System.out.println("right join");
-        System.out.println(select(list2, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(list1))));
+        System.out.println(select(
+                list2,
+                having(on(FileEntry.class).getFilename(),
+                        org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(extract(list1,
+                                on(FileEntry.class).getFilename()))))));
+
 
     }
 
