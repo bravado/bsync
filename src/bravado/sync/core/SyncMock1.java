@@ -18,27 +18,47 @@ public class SyncMock1 {
 
         HashMap<String,String> arquivosgui = new HashMap<String, String>();
         HashMap<String,String> arquivosbob = new HashMap<String, String>();
+        HashMap<String, String> operations;
 
         try {
-            repo.put("zezinho", "file3", "v2");
+            arquivosbob.put("file3", "v2");
+            System.out.println("Arquivos bob local " + arquivosbob);
+
+            // bob envia file3, v2
+            operations = repo.sync("bob", arquivosbob);
+            System.out.println(operations);
+            repo.exec("bob", operations, arquivosbob);
+            System.out.print(repo.listFiles());
+
             arquivosgui.put("file1", "v1");
             arquivosgui.put("file2", "v1");
 
-            HashMap<String, String> operations = repo.sync("gui", arquivosgui);
-            System.out.println(operations);
-
-            repo.exec("gui", operations, arquivosgui);
-
-            System.out.print(repo.listFiles());
-
-            arquivosgui.put("file1", "v2");
+            System.out.println("Arquivos gui local " + arquivosgui);
             operations = repo.sync("gui", arquivosgui);
             System.out.println(operations);
-
             repo.exec("gui", operations, arquivosgui);
-
             System.out.print(repo.listFiles());
 
+            operations = repo.sync("bob", arquivosbob);
+            System.out.println(operations);
+            repo.exec("bob", operations, arquivosbob);
+            System.out.print(repo.listFiles());
+
+
+            System.out.println("Arquivos bob local " + arquivosbob);
+            arquivosgui.put("file1", "v2");
+            System.out.println("Arquivos gui local " + arquivosgui);
+            operations = repo.sync("gui", arquivosgui);
+            System.out.println(operations);
+            repo.exec("gui", operations, arquivosgui);
+            System.out.print(repo.listFiles());
+
+            arquivosbob.remove("file3");
+            System.out.println("Arquivos bob local " + arquivosbob);
+            operations = repo.sync("bob", arquivosbob);
+            System.out.println(operations);
+            repo.exec("bob", operations, arquivosbob);
+            System.out.print(repo.listFiles());
 
 //            arquivosbob.put("file3", "v1");
 //            arquivosbob.put("file4", "v2");
