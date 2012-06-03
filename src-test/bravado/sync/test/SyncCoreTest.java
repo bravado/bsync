@@ -60,31 +60,6 @@ public class SyncCoreTest {
         Assert.assertTrue(operationsRepo1.containsAll(operationsExpected));
     }
 
-    public void testRepo1PutDeleteAndPut() {
-
-        MockSyncToken repo1 = new MockSyncToken("repo1", "~/");
-
-        MockServer server = new MockServer();
-
-        // repo1 add file
-        repo1.addFile(new FileEntry("file2.txt", "2343"));
-
-        List<SyncOperation> operationsRepo1 = server.sync(repo1, repo1.repositoryFiles);
-
-        List<SyncOperation> operationsExpected = new ArrayList<SyncOperation>();
-        operationsExpected.add(new SyncOperation(new FileEntry("file2.txt", "2343"), PUT));
-
-        Assert.assertTrue(operationsRepo1.containsAll(operationsExpected));
-
-        repo1.repositoryFiles.clear();
-
-        operationsRepo1 = server.sync(repo1, repo1.repositoryFiles);
-
-        operationsExpected = new ArrayList<SyncOperation>();
-        operationsExpected.add(new SyncOperation(new FileEntry("file2.txt", "2343"), PUT));
-
-    }
-
     public void testRepo1Delete() {
 
         MockSyncToken repo1 = new MockSyncToken("repo1", "~/");
@@ -258,7 +233,7 @@ public class SyncCoreTest {
         historico.add(new FileEntry("file8", "123"));
         server.add(new FileEntry("file8", "876"));
 
-        // server delete
+        // delete server
         historico.add(new FileEntry("file11", "876"));
         server.add(new FileEntry("file11", "876"));
 
@@ -273,11 +248,19 @@ public class SyncCoreTest {
 
         List<FileEntry> put = select(user, not(isIn(historico)));
 
-        List<FileEntry> deletedOnClient = select(
+        List<FileEntry> deletedButUpdatedOnServer = select(select(
                 historico,
                 having(on(FileEntry.class).getFilename(),
                         not(isIn(extract(user,
-                                on(FileEntry.class).getFilename())))));
+                                on(FileEntry.class).getFilename()))))), not(isIn(server)));
+
+        List<FileEntry> deletedOnClient = select(select(
+                historico,
+                having(on(FileEntry.class).getFilename(),
+                        not(isIn(extract(user,
+                                on(FileEntry.class).getFilename()))))), having(on(FileEntry.class).getFilename(),
+                not(isIn(extract(deletedButUpdatedOnServer,
+                        on(FileEntry.class).getFilename())))));
 
         List<FileEntry> get = select(server, not(isIn(historico)));
 
@@ -295,11 +278,18 @@ public class SyncCoreTest {
         List<FileEntry> get3 = select(get2, having(on(FileEntry.class).getFilename(),
                 not(isIn(extract(conflict, on(FileEntry.class).getFilename())))));
 
+
+        // List<FileEntry> deletedButUpdatedOnServer = select(deletedOnClient, not(isIn(server)));
+
+
         System.out.println("\nPUT");
         ls(put);
 
         System.out.println("\nGET");
         ls(get3);
+
+        System.out.println("\nDELTED BUT UPDATED ON SERVER");
+        System.out.println(deletedButUpdatedOnServer);
 
         System.out.println("\nDELETE SERVER");
         ls(deletedOnClient);
