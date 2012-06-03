@@ -63,37 +63,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SyncCore.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="178" selection-end="212" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#669#684#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SyncCoreTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="90" selection-start="5022" selection-end="5022" vertical-scroll-proportion="0.8543689">
+            <state line="253" column="44" selection-start="8694" selection-end="8695" vertical-scroll-proportion="1.1194267">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1366#1381#0" expanded="true" />
-                <element signature="e#2049#2064#0" expanded="true" />
-                <element signature="e#2955#2970#0" expanded="true" />
-                <element signature="e#3870#3881#0" expanded="true" />
-                <element signature="e#3930#3941#0" expanded="true" />
+                <element signature="e#1568#1583#0" expanded="true" />
+                <element signature="e#2251#2266#0" expanded="true" />
+                <element signature="e#3157#3172#0" expanded="true" />
+                <element signature="e#4072#4083#0" expanded="true" />
+                <element signature="e#4132#4143#0" expanded="true" />
+                <element signature="e#5292#5303#0" expanded="true" />
+                <element signature="e#5351#5362#0" expanded="true" />
+                <element signature="e#5412#5423#0" expanded="true" />
+                <element signature="e#7488#7499#0" expanded="true" />
+                <element signature="e#7547#7558#0" expanded="true" />
+                <element signature="e#7608#7619#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileEntry.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="67" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
+            <state line="21" column="21" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,6 +154,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="2" />
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="774" />
@@ -295,63 +291,7 @@
       <recent name="bravado.sync.core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SyncCoreTest.testNotIn">
-    <configuration default="false" name="SyncCoreTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="bravado.sync.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bsync" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="bravado.sync.test" />
-      <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="SyncCoreTest.testReposirotyGetAllFiles" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="bravado.sync.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bsync" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="bravado.sync.test" />
-      <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
-      <option name="METHOD_NAME" value="testReposirotyGetAllFiles" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.SyncCoreTest.testGroupingOperations">
     <configuration default="false" name="SyncCoreTest.testBobPutAllFiles" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -393,6 +333,90 @@
       <option name="PACKAGE_NAME" value="bravado.sync.test" />
       <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
       <option name="METHOD_NAME" value="testNotIn" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SyncCoreTest.testAlgoritmo" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="bravado.sync.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bsync" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="bravado.sync.test" />
+      <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
+      <option name="METHOD_NAME" value="testAlgoritmo" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SyncCoreTest.testCoreSync" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="bravado.sync.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bsync" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="bravado.sync.test" />
+      <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
+      <option name="METHOD_NAME" value="testCoreSync" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SyncCoreTest.testGroupingOperations" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="bravado.sync.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bsync" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="bravado.sync.test" />
+      <option name="MAIN_CLASS_NAME" value="bravado.sync.test.SyncCoreTest" />
+      <option name="METHOD_NAME" value="testGroupingOperations" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -543,11 +567,12 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.SyncCoreTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testReposirotyGetAllFiles" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testBobPutAllFiles" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testNotIn" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testBobPutAllFiles" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testNotIn" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testAlgoritmo" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testCoreSync" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.SyncCoreTest.testGroupingOperations" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -602,7 +627,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
+    <frame x="2" y="22" width="1280" height="774" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -621,8 +646,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33522728" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23863636" sideWeight="0.670229" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977098" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23863636" sideWeight="0.17099236" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8290076" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -747,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="21" selection-start="784" selection-end="784" vertical-scroll-proportion="0.50159234">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncMock1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="189" column="82" selection-start="6315" selection-end="6315" vertical-scroll-proportion="0.46341464">
@@ -763,7 +781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/SyncCore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="178" selection-end="212" vertical-scroll-proportion="0.0">
+        <state line="8" column="0" selection-start="178" selection-end="212" vertical-scroll-proportion="0.2982456">
           <folding>
             <element signature="e#669#684#0" expanded="true" />
           </folding>
@@ -772,21 +790,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bravado/sync/core/FileEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="67" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
+        <state line="43" column="16" selection-start="868" selection-end="868" vertical-scroll-proportion="0.85641026">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="21" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src-test/bravado/sync/test/SyncCoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="90" selection-start="5022" selection-end="5022" vertical-scroll-proportion="0.8543689">
+        <state line="253" column="44" selection-start="8694" selection-end="8695" vertical-scroll-proportion="1.1194267">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1366#1381#0" expanded="true" />
-            <element signature="e#2049#2064#0" expanded="true" />
-            <element signature="e#2955#2970#0" expanded="true" />
-            <element signature="e#3870#3881#0" expanded="true" />
-            <element signature="e#3930#3941#0" expanded="true" />
+            <element signature="e#1568#1583#0" expanded="true" />
+            <element signature="e#2251#2266#0" expanded="true" />
+            <element signature="e#3157#3172#0" expanded="true" />
+            <element signature="e#4072#4083#0" expanded="true" />
+            <element signature="e#4132#4143#0" expanded="true" />
+            <element signature="e#5292#5303#0" expanded="true" />
+            <element signature="e#5351#5362#0" expanded="true" />
+            <element signature="e#5412#5423#0" expanded="true" />
+            <element signature="e#7488#7499#0" expanded="true" />
+            <element signature="e#7547#7558#0" expanded="true" />
+            <element signature="e#7608#7619#0" expanded="true" />
           </folding>
         </state>
       </provider>
