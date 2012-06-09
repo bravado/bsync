@@ -14,29 +14,30 @@ import java.util.List;
  * 6/2/12 5:11 PM
  */
 public class MockServer extends SyncCore {
-    
+
+    private static String SERVER_REPOSITORY = "server";
+
     public List<FileEntry> serverFiles = new ArrayList<FileEntry>();
+    // user, FileEntry
     public HashMap<SyncToken, List<FileEntry>> history = new HashMap<SyncToken, List<FileEntry>>();
 
-    public void addFile(SyncToken repo, FileEntry fileEntry) {
+    public void addFile(SyncToken syncToken, FileEntry fileEntry) {
         serverFiles.add(fileEntry);
-
-
-        //history.put(repo, fileEntry);
+        getServerRepositoryHistory(syncToken).add(fileEntry);
     }
 
     public void addFile(FileEntry fileEntry) {
         serverFiles.add(fileEntry);
     }
 
-    public void deleteFile(SyncToken repo, FileEntry fileEntry) {
-        serverFiles.remove(fileEntry);
-        history.get(repo);
-    }
-
     @Override
-    protected HashMap<SyncToken, List<FileEntry>> getServerRepositoryHistory() {
-        return history;
+    protected List<FileEntry> getServerRepositoryHistory(SyncToken syncToken) {
+        List<FileEntry> listFileEntry = history.get(syncToken);
+        if (listFileEntry == null) {
+            listFileEntry = new ArrayList<FileEntry>();
+            history.put(syncToken, listFileEntry);
+        }
+        return listFileEntry;
     }
 
     @Override

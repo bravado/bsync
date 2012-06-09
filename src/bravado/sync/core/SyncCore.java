@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static ch.lambdaj.Lambda.*;
 import static ch.lambdaj.Lambda.select;
+import static org.hamcrest.Matchers.isIn;
+import static org.hamcrest.Matchers.not;
 
 /**
  * SyncCore
@@ -15,20 +18,7 @@ import static ch.lambdaj.Lambda.select;
  */
 public class SyncCore {
 
-    public List<FileEntry> getHistoryFor(SyncToken syncToken) {
-        HashMap<SyncToken, List<FileEntry>> serverHistory = getServerRepositoryHistory();
-
-        List<FileEntry> userHistory = serverHistory.get(syncToken);
-
-        if (userHistory == null) {
-            userHistory = new ArrayList<FileEntry>();
-            serverHistory.put(syncToken, userHistory);
-        }
-
-        return userHistory;
-    }
-
-    protected HashMap<SyncToken, List<FileEntry>> getServerRepositoryHistory() {
+    protected List<FileEntry> getServerRepositoryHistory(SyncToken syncToken) {
         throw new NotImplementedException();
     }
 
@@ -36,93 +26,76 @@ public class SyncCore {
         throw new NotImplementedException();
     }
 
-    public List<SyncOperation> sync(SyncToken syncToken, List<FileEntry> userFiles) {
+    protected void doServerOperation(SyncOperation operation) {
+        throw new NotImplementedException();
+    }
+    
+    
+    public List<SyncOperation> sync(SyncToken syncToken, List<FileEntry> syncTokenFileEntries) {
 
         List<SyncOperation> operations = new ArrayList<SyncOperation>();
 
-        List<FileEntry> serverFiles = getServerRepositoryFiles();
-        List<FileEntry> userHistory = getHistoryFor(syncToken);
+        List<FileEntry> historyFileEntries = getServerRepositoryHistory(syncToken);
+        List<FileEntry> serverFileEntries = getServerRepositoryFiles();
 
-        // Files that were deleted on the client
-        List<FileEntry> clientDeletedFiles = select(userHistory, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(userFiles)));
-        for (FileEntry fileEntry : clientDeletedFiles) {
-            if (!userFiles.contains(fileEntry)) {
-                operations.add(new SyncOperation(fileEntry, SyncOperation.DELETE));
-            }
-        }
+        List<FileEntry> put = select(syncTokenFileEntries, not(isIn(historyFileEntries)));
+        
+        List<FileEntry> deletedButUpdatedOnServer = select(select(
+                historyFileEntries,
+                having(on(FileEntry.class).getFilename(),
+                        not(isIn(extract(syncTokenFileEntries,
+                                on(FileEntry.class).getFilename()))))), not(isIn(serverFileEntries)));
 
-        // New files on server
-        List<FileEntry> serverNewFiles = select(serverFiles, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(userFiles)));
-        for (FileEntry fileEntry : serverNewFiles) {
-            operations.add(new SyncOperation(fileEntry, SyncOperation.GET));
+        List<FileEntry> deletedOnClient = select(select(
+                historyFileEntries,
+                having(on(FileEntry.class).getFilename(),
+                        not(isIn(extract(syncTokenFileEntries,
+                                on(FileEntry.class).getFilename()))))), having(on(FileEntry.class).getFilename(),
+                not(isIn(extract(deletedButUpdatedOnServer,
+                        on(FileEntry.class).getFilename())))));
 
-        }
+        List<FileEntry> get = select(serverFileEntries, not(isIn(historyFileEntries)));
 
-        // New files on the client
-        List<FileEntry> clientNewFiles = select(userFiles, org.hamcrest.Matchers.not(org.hamcrest.Matchers.isIn(serverFiles)));
-        for (FileEntry fileEntry : clientNewFiles) {
+        List<FileEntry> conflict = select(
+                get,
+                having(on(FileEntry.class).getFilename(),
+                        isIn(extract(put,
+                                on(FileEntry.class).getFilename()))));
+
+        List<FileEntry> get2 = select(select(serverFileEntries, not(isIn(historyFileEntries))),
+                having(on(FileEntry.class).getFilename(),
+                        not(isIn(extract(deletedOnClient, on(FileEntry.class).getFilename())))));
+
+
+        List<FileEntry> get3 = select(get2, having(on(FileEntry.class).getFilename(),
+                not(isIn(extract(conflict, on(FileEntry.class).getFilename())))));
+
+        List<FileEntry> delete_on_client = select(select(
+                historyFileEntries,
+                        having(on(FileEntry.class).getFilename(),
+                                not(isIn(extract(serverFileEntries,
+                                        on(FileEntry.class).getFilename()))))),
+                        having(on(FileEntry.class).getFilename(),
+                                not(isIn(extract(put,
+                                        on(FileEntry.class).getFilename())))));
+
+        for(FileEntry fileEntry: put) {
             operations.add(new SyncOperation(fileEntry, SyncOperation.PUT));
         }
-/*
-        // New or conflicting files from client
-        for (FileEntry fileEntry : userFiles) {
-
-            // server does not have file (or it has been deleted)
-            if (!serverFiles.contains(fileEntry)) {
-
-            }
-
-
-            String hashServer = files.get(k);
-            if (hashServer == null) { // arquivo ainda não existe no server ou foi excluído
-                if (historico.get(k) == null) { // nunca baixou esse arquivo do servidor
-                    operations.put(k, "put");
-                } else {
-                    // tinha baixado o arquivo, mas ele não existe mais
-                    operations.put(k, "delete-local");
-                }
-            } else { // servidor já tem o arquivo
-
-                if (hashServer.equals(currentUserFiles.get(k))) {
-                    // arquivos são iguais, não fazer nada
-                    // Caso extremo - usuário não baixou a última versão, mas tem a versão atual localmente
-                    //  (Precisaria marcar que o hash historico igual ao que o usuário enviou)
-
-                } else {
-                    // arquivo do server e enviado pelo client são diferentes!
-                    String hashAntigo = historico.get(k);
-
-                    if (hashAntigo.equals(hashServer)) { // usuário tinha a última versão do arquivo
-                        operations.put(k, "put");
-                    } else {
-                        // o hashAntigo é diferente do que tinha no server
-
-                        // se o client enviou o mesmo arquivo de antes
-                        if (hashAntigo.equals(currentUserFiles.get(k))) {
-                            operations.put(k, "get");
-                        }
-                    }
-                }
-            }
-
+        
+        for(FileEntry fileEntry: get3) {
+            operations.add(new SyncOperation(fileEntry, SyncOperation.GET));
+        }
+        
+        for(FileEntry fileEntry: delete_on_client) {
+            operations.add(new SyncOperation(fileEntry, SyncOperation.DELETE));
+        }
+        
+        for(FileEntry fileEntry: deletedOnClient) {
+            doServerOperation(new SyncOperation(fileEntry, SyncOperation.DELETE));
         }
 
-        // TODO filter only files found on server and syncToken (join ?)
-        for (FileEntry fileEntry : repositoryFilesAndServerJoin) {
-            operations.add(new SyncOperation(fileEntry, canRepositoryUpdateFile(syncToken, fileEntry) ? SyncOperation.PUT : SyncOperation.GET));
-        }
-*/
         return operations;
     }
-/*
-    private boolean canRepositoryUpdateFile(SyncToken syncToken, FileEntry fileEntry) {
-        FileEntry historyFileEntry = getServerRepositoryHistory().get(syncToken);
 
-        if (historyFileEntry == null) {
-            return false; // TODO check conflict ?
-        }
-
-        return getServerRepositoryFiles().indexOf(historyFileEntry) > 0;
-    }
-*/
 }
